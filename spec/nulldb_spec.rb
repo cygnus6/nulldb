@@ -249,7 +249,8 @@ describe "NullDB" do
 
   def should_have_column(klass, col_name, col_type)
     col = klass.columns_hash[col_name.to_s]
-    expect(col.sql_type).to eq col_type
+    # to_sym due to activerecord 3.1 and lower
+    expect(col.sql_type.to_sym).to eq col_type
   end
 
 
